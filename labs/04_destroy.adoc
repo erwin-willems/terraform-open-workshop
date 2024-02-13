@@ -1,0 +1,25 @@
+== Destroy the environment
+
+Everything that is created by terraform can be destroyed by running the following command: `terraform destroy`.
+
+Run `terraform destroy` and confirm the destruction of the environment by typing `yes`.
+
+```
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  - private_ip = "10.0.0.27" -> null
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+aws_instance.example: Destroying... [id=i-0cddf7e03df0891dc]
+aws_instance.example: Still destroying... [id=i-0cddf7e03df0891dc, 10s elapsed]
+aws_instance.example: Still destroying... [id=i-0cddf7e03df0891dc, 20s elapsed]
+aws_instance.example: Destruction complete after 21s
+
+Destroy complete! Resources: 1 destroyed.
+```

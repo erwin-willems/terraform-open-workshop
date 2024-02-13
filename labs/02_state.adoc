@@ -1,0 +1,37 @@
+== Terraform state
+
+The Terraform state is the source of truth for the infrastructure. It contains the metadata of the resources that are managed by Terraform. This metadata is used to map real world resources to the configuration, keep track of metadata, and to improve performance for large infrastructures.
+
+The state is stored by default in a local file named `terraform.tfstate`, but it can also be stored remotely, which works better in a team environment.
+
+The state file is in JSON format and can be manually edited, but it's not recommended to do so, as it can lead to inconsistencies and unexpected behavior.
+
+The state file can be stored remotely, which is recommended for team environments. The state file can be stored in a number of places, such as S3, Azure Blob Storage, Google Cloud Storage, and more.
+
+The state file can be locked to prevent concurrent modifications, which is useful in team environments.
+
+* Run `terraform state list` to list all the resources in the state file:
+```
+aws_instance.example
+```
+
+* Run `terraform state show aws_instance.example` to show the details of a specific resource:
+```
+# aws_instance.example:
+resource "aws_instance" "example" {
+    ami                                  = "ami-0d940f23d527c3ab1"
+    <output trunctated>
+}
+```
+
+If you did not specify a remote state, Terraform will store the state locally in a file named `terraform.tfstate`. This is not recommended for team environments, as it can lead to inconsistencies and unexpected behavior.
+
+* Open the terraform.tfstate file with your favourite editor (the file terraform.tfstate in your working directory) to see the state of the infrastructure. This file is in JSON format and contains the state of the infrastructure.
+
+IMPORTANT: The state file can contain sensitive information, such as passwords, private keys, and other secrets. It's important to keep the state file secure and not to commit it to a public repository.
+
+
+
+
+
+

@@ -1,0 +1,167 @@
+== First steps
+
+Let's start with some basic Terraform commands.
+Run the following commands on the "Shell" tab.
+
+Check the version of Terraform running on your machine:
+
+```
+terraform version
+```
+
+You can always get help if you're curious about command syntax:
+
+```
+terraform --help
+```
+
+== Connecting Terraform to AWS
+
+In order to authenticate to AWS and build resources, Terraform requires you to provide a set of credentials, backed by an appropriate IAM policy.
+
+For this training environment, we have prepared some temporary AWS credentials and stored them as environment variables. Terraform will automatically read and use the environment variables that are configured in your shell environment.
+
+Run the following commands on the "Shell" tab:
+
+```
+echo $AWS_ACCESS_KEY_ID
+echo $AWS_SECRET_ACCESS_KEY
+```
+You should see valid AWS keys. If not, return to the track home page by clicking the **Close** button, stop the track, and then restart it.
+
+
+IMPORTANT: *Do not ever store your credentials in source code files*, as they can be accidentally exposed or copied to a public repository.
+
+
+== What does Terraform code look like?
+
+Terraform will read anything in the current directory that ends in `*.tf` or `*.tfvars`.
+
+By convention most Terraform workspaces will contain `main.tf`, `variables.tf`, and `outputs.tf` files.
+
+You can also group your Terraform code into files by purpose. For example, you might place all your load balancer configuration code into a file called `load_balancer.tf`.
+
+TIP: Did you know HCL stands for "HashiCorp Configuration Language"?
+
+== Terraform code structure
+
+Terraform code is written in HCL (HashiCorp Configuration Language). It is a declarative language that allows you to define infrastructure resources and their configuration.
+
+Here's a simple example of a Terraform configuration file:
+
+```hcl
+# providers.tf
+provider "aws" {
+  region = "eu-west-1"
+}
+```
+
+This code snippet tells Terraform to use the AWS provider and to create resources in the `eu-west-1` region.
+
+== Terraform providers
+
+Terraform providers are responsible for understanding API interactions and exposing resources. They are the plugins that Terraform uses to manage resources.
+
+In the example above, `aws` is the name of the provider. Terraform will use the AWS provider to create resources in the `eu-west-1` region.
+
+Terraform providers are distributed separately from the core Terraform binary. You can install them using the `terraform init` command.
+
+* Create a new file `providers.tf`:
+
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "eu-west-1"
+}
+```
+
+* Run `terraform init` to install the AWS provider
+
+```
+Terraform has been successfully initialized!
+```
+
+== Terraform resources
+
+Terraform resources are the most important element of the Terraform language. They define the infrastructure objects that Terraform manages.
+
+Here's an example of a Terraform resource which creates an EC2 instance:
+
+```hcl
+resource "aws_instance" "example" {
+  ami           = "ami-0d940f23d527c3ab1"
+  instance_type = "t3.micro"
+  subnet_id     = "subnet-044879789875edcb8"
+}
+```
+
+This code snippet tells Terraform to create an EC2 instance using the specified AMI, instance type, and subnet.
+
+
+* Create a new file `main.tf`:
+
+
+```hcl
+resource "aws_instance" "example" {
+  ami           = "ami-0d940f23d527c3ab1"
+  instance_type = "t3.micro"
+  subnet_id     = "subnet-044879789875edcb8"
+}
+```
+
+* Run `terraform plan` to see what Terraform will do
+
+```
+Terraform will perform the following actions:
+
+  # aws_instance.web will be created
+  + resource "aws_instance" "example" {
+      + ami                                  = "ami-0d940f23d527c3ab1"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + id                                   = (known after apply)
+      + instance_type                        = "t3.micro"
+      + private_ip                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-044879789875edcb8"
+      + user_data                            = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+```
+
+* Run `terraform apply` to create the EC2 instance
+
+```
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_instance.example: Creating...
+aws_instance.example: Still creating... [10s elapsed]
+aws_instance.example: Creation complete after 13s [id=i-0cddf7e03df0891dc]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+
