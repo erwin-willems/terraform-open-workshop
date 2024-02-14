@@ -1,0 +1,33 @@
+== Introduction
+Welcome to the Terraform workshop. 
+
+
+
+== Prequisites
+For this workshop you need:
+- Terraform installed on your machine
+- Have the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` set
+
+=== Install terraform on you machine
+Terraform open source is a command line application that you can download and run from your laptop or virtual workstation.
+
+It is written in Go and runs on macOS, Linux or Windows. You can always download the latest version of Terraform from https://www.terraform.io/downloads.html
+
+
+=== Set environment variables
+MacOS / Linux:
+
+```bash
+export AWS_ACCESS_KEY_ID=<provided access key id>
+export AWS_SECRET_ACCESS_KEY=<provided secret access key>
+```
+
+Windows:
+
+```powershell
+$Env:AWS_ACCESS_KEY_ID="<provided access key id>"
+$Env:AWS_SECRET_ACCESS_KEY="<provided secret access key>"
+```
+
+Next step:
+link:01_first_steps.adoc[First steps]
