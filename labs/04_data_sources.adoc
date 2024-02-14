@@ -1,4 +1,4 @@
-== data object
+== data sources
 
 In the main.tf we hardcoded the ami (the image id). This is not a good practice. We should use data object to get the ami and instance type dynamically.
 
