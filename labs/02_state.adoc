@@ -35,4 +35,4 @@ IMPORTANT: The state file can contain sensitive information, such as passwords, 
 
 
 Next step:
-link:/03_output.adoc[Terraform Output]
+link:03_output.adoc[Terraform Output]

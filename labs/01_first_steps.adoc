@@ -166,4 +166,4 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
 Next step:
-link:/02_state.adoc[manage the state]
+link:02_state.adoc[manage the state]

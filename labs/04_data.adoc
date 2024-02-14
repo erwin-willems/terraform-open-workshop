@@ -41,4 +41,4 @@ In this example, we are using the data object to get the ami id dynamically. We 
 * And then run `terraform apply` to apply the changes
 
 Next step:
-link:/05_variables.adoc[Variables]
+link:05_variables.adoc[Variables]

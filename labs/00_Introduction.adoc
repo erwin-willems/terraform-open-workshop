@@ -30,4 +30,4 @@ $Env:AWS_SECRET_ACCESS_KEY="<provided secret access key>"
 ```
 
 Next step:
-link:/01_first_steps.adoc[First steps]
+link:01_first_steps.adoc[First steps]

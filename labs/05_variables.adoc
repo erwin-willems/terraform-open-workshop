@@ -83,4 +83,4 @@ In this example, we define the value of the `region` variable in the `auto.tfvar
 * Try to find out what happens when you use the `-var` flag to override the value of a variable.
 
 Next step:
-link:/06_destroy.adoc[Destroy the infrastructure]
+link:06_destroy.adoc[Destroy the infrastructure]

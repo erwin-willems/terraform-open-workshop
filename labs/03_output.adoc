@@ -16,4 +16,4 @@ output "private_ip" {
 It is also possible to get only the value of the output by running `terraform output private_ip`
 
 Next step:
-link:/04_data.adoc[Data sources]
+link:04_data.adoc[Data sources]
