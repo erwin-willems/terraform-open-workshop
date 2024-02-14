@@ -38,7 +38,7 @@ resource "aws_instance" "example" {
 In the example above, we use the `var` function to reference the value of the `region` variable, and we use it to set the `region` attribute of the `aws_instance` resource.
 
 === Task: Create a new variable
-* Create a new variable in 'variables.tf' for instance_type and use it in the aws_instance resource in your `main.tf``.
+* Create a new variable in `variables.tf` for `instance_type` and use it in the `aws_instance` resource in your `main.tf`.
 
 
 == Use variables
