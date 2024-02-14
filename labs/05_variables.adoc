@@ -69,16 +69,16 @@ variable "region" {
 
 In the example above, we define a variable called `region` with a type of `string`, a default value of `eu-west-1`, and a description of `The region in which to create the resources.`
 
-Variables can also be defined in a file using the `auto.tfvars` file. The `auto.tfvars` file is used to define variables, and it can be used to define the value of the variable.
+Variables can also be defined in a file using the `terraform.tfvars` file. The `terraform.tfvars` file is used to define variables, and it can be used to define the value of the variable.
 
 ```hcl
 region = "eu-west-1"
 ```
 
-In this example, we define the value of the `region` variable in the `auto.tfvars` file.
+In this example, we define the value of the `region` variable in the `terraform.tfvars` file.
 
 === Task: Use variables
-* Add the `instance_type` variable to the `auto.tfvars` file and use it in the `aws_instance` resource in your `main.tf`. Set the value to `t2.micro`.
+* Add the `instance_type` variable to the `terraform.tfvars` file and use it in the `aws_instance` resource in your `main.tf`. Set the value to `t2.micro`.
 * Run `terraform apply` to apply the changes.
 * Try to find out what happens when you use the `-var` flag to override the value of a variable.
 
