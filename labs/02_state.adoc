@@ -10,6 +10,7 @@ The state file can be stored remotely, which is recommended for team environment
 
 The state file can be locked to prevent concurrent modifications, which is useful in team environments.
 
+=== Task: Terraform state
 * Run `terraform state list` to list all the resources in the state file:
 ```
 aws_instance.example
@@ -26,12 +27,12 @@ resource "aws_instance" "example" {
 
 If you did not specify a remote state, Terraform will store the state locally in a file named `terraform.tfstate`. This is not recommended for team environments, as it can lead to inconsistencies and unexpected behavior.
 
+=== Task: Inspect the state file
 * Open the terraform.tfstate file with your favourite editor (the file terraform.tfstate in your working directory) to see the state of the infrastructure. This file is in JSON format and contains the state of the infrastructure.
 
 IMPORTANT: The state file can contain sensitive information, such as passwords, private keys, and other secrets. It's important to keep the state file secure and not to commit it to a public repository.
 
 
 
-
-
-
+Next step:
+link:/03_output.adoc[Terraform Output]

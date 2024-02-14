@@ -1,0 +1,86 @@
+== Variables in Terraform
+
+Variables in Terraform are used to define values that can be used in your configuration. They can be used to define values for your resources, or to define values that can be used in your configuration. Variables can be defined in a number of ways, including as environment variables, as command-line arguments, or in a file.
+
+Variables in Terraform are defined using the `variable` block. The `variable` block is used to define a variable, and it can be used to define the type of the variable, the default value of the variable, and the description of the variable.
+
+The `variable` block is used to define a variable, and it can be used to define the type of the variable, the default value of the variable, and the description of the variable.
+
+```hcl
+variable "region" {
+  description = "The region in which to create the resources."
+  type        = string
+  default     = "eu-west-1"
+}
+```
+
+In the example above, we define a variable called `region` with a type of `string`, a default value of `eu-west-1`, and a description of `The region in which to create the resources.`
+Variables can be used in your configuration by using the `var` function. The `var` function is used to reference a variable in your configuration, and it can be used to reference the value of a variable, or to reference the type of a variable.
+
+```hcl
+provider "aws" {
+  region = var.region
+}
+```
+
+We use the `var` function to reference the value of the `region` variable, and we use it to set the `region` attribute of the `aws` provider.
+
+Variables can also be used to define values for your resources. You can use the `var` function to reference the value of a variable in your resource configuration, and you can use it to define the value of an attribute of a resource.
+
+```hcl
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  region        = var.region
+}
+```
+
+In the example above, we use the `var` function to reference the value of the `region` variable, and we use it to set the `region` attribute of the `aws_instance` resource.
+
+=== Task: Create a new variable
+* Create a new variable in 'variables.tf' for instance_type and use it in the aws_instance resource in your `main.tf``.
+
+
+== Use variables
+Variables can be defined in a number of ways, including as environment variables, as command-line arguments, or in a file. You can use the `terraform` command-line tool to define variables using the `-var` flag, and you can use the `TF_VAR_` prefix to define environment variables.
+
+```bash
+terraform apply -var 'region=eu-west-1'
+```
+
+In the example above, we use the `terraform` command-line tool to define the value of the `region` variable using the `-var` flag.
+
+```bash
+export TF_VAR_region=eu-west-1
+```
+
+In the example above, we use the `TF_VAR_` prefix to define the value of the `region` variable as an environment variable.
+
+Variables can also be defined in a file using the `variables.tf` file. The `variables.tf` file is used to define variables, and it can be used to define the type of the variable, the default value of the variable, and the description of the variable.
+
+```hcl
+
+variable "region" {
+  description = "The region in which to create the resources."
+  type        = string
+  default     = "eu-west-1"
+}
+```
+
+In the example above, we define a variable called `region` with a type of `string`, a default value of `eu-west-1`, and a description of `The region in which to create the resources.`
+
+Variables can also be defined in a file using the `auto.tfvars` file. The `auto.tfvars` file is used to define variables, and it can be used to define the value of the variable.
+
+```hcl
+region = "eu-west-1"
+```
+
+In this example, we define the value of the `region` variable in the `auto.tfvars` file.
+
+=== Task: Use variables
+* Add the `instance_type` variable to the `auto.tfvars` file and use it in the `aws_instance` resource in your `main.tf`. Set the value to `t2.micro`.
+* Run `terraform apply` to apply the changes.
+* Try to find out what happens when you use the `-var` flag to override the value of a variable.
+
+Next step:
+link:/06_destroy.adoc[Destroy the infrastructure]

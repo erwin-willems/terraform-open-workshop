@@ -29,3 +29,5 @@ $Env:AWS_ACCESS_KEY_ID="<provided access key id>"
 $Env:AWS_SECRET_ACCESS_KEY="<provided secret access key>"
 ```
 
+Next step:
+link:/01_first_steps.adoc[First steps]

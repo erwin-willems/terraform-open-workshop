@@ -1,0 +1,44 @@
+== data object
+
+In the main.tf we hardcoded the ami (the image id). This is not a good practice. We should use data object to get the ami and instance type dynamically.
+
+It is possible to get the ami id dynamically using the aws_ami data object in terraform:
+
+```hcl
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+```
+
+In this example, we are using the aws_ami data object to get the most recent Ubuntu 22.04 image id. We are using the most_recent attribute to get the most recent image id. We are using the filter attribute to filter the image id based on the name and virtualization-type. We are using the owners attribute to specify the owner of the image id.
+
+We can use the data object in the resource block to get the ami id dynamically:
+
+```hcl
+resource "aws_instance" "example" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+}
+```
+
+In this example, we are using the data object to get the ami id dynamically. We are using the id attribute to get the ami id.
+
+=== Task: Use data object to get the ami id dynamically
+* Now modify your main.tf file to use the data object to get the ami id dynamically.
+* Run `terraform plan` to review the changes
+* And then run `terraform apply` to apply the changes
+
+Next step:
+link:/05_variables.adoc[Variables]

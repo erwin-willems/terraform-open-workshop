@@ -2,7 +2,8 @@
 
 Everything that is created by terraform can be destroyed by running the following command: `terraform destroy`.
 
-Run `terraform destroy` and confirm the destruction of the environment by typing `yes`.
+=== Task: Destroy the environment
+* Run `terraform destroy` and confirm the destruction of the environment by typing `yes`.
 
 ```
 Plan: 0 to add, 0 to change, 1 to destroy.

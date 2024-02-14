@@ -66,6 +66,7 @@ In the example above, `aws` is the name of the provider. Terraform will use the 
 
 Terraform providers are distributed separately from the core Terraform binary. You can install them using the `terraform init` command.
 
+=== Task: Create a Terraform configuration file
 * Create a new file `providers.tf`:
 
 ```hcl
@@ -106,7 +107,7 @@ resource "aws_instance" "example" {
 
 This code snippet tells Terraform to create an EC2 instance using the specified AMI, instance type, and subnet.
 
-
+=== Task: Create an EC2 instance
 * Create a new file `main.tf`:
 
 
@@ -164,4 +165,5 @@ aws_instance.example: Creation complete after 13s [id=i-0cddf7e03df0891dc]
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-
+Next step:
+link:/02_state.adoc[manage the state]

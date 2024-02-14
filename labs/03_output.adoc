@@ -2,6 +2,7 @@
 
 You can use every part of a resource as an output. This is useful to get the value of a resource and use it in another resource.
 
+=== Task: Create an output
 * Create a new file `outputs.tf` and add the following content:
 
 ```hcl
@@ -14,4 +15,5 @@ output "private_ip" {
 
 It is also possible to get only the value of the output by running `terraform output private_ip`
 
-
+Next step:
+link:/04_data.adoc[Data sources]
